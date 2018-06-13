@@ -1,0 +1,28 @@
+<layout-outlet>
+  <div header>
+    <navbar-outlet style="background-color: #efefef;">
+      <div navbarLeft (click)="cancel()">取消</div>
+      <div navbarTitle>选择支付方式</div>
+      <div navbarRight (click)="next()">下一步</div>
+    </navbar-outlet>
+  </div>
+  <ul>
+    <li (ngHover)="ngHover($event,i)" [class.selected]="current === item.key" [ngHoverData]="item" *ngFor="let item of list;index as i;">
+      <div class="row" *ngIf="item.key === 'credit'">
+        <i class="iconfont icon-yuezhifu"></i>
+        <div class="content">余额支付</div>
+        <i *ngIf="current === i" class="iconfont icon-xuanze-danxuan"></i>
+      </div>
+      <div class="row" *ngIf="item.key === 'wechat'">
+        <i class="iconfont icon-weixinzhifu"></i>
+        <div class="content">微信支付</div>
+        <i *ngIf="current === i" class="iconfont icon-xuanze-danxuan"></i>
+      </div>
+      <div class="row" *ngIf="item.key === 'alipay'">
+        <i class="iconfont icon-zhifubao"></i>
+        <div class="content">支付宝支付</div>
+        <i *ngIf="current === i" class="iconfont icon-xuanze-danxuan"></i>
+      </div>
+    </li>
+  </ul>
+</layout-outlet>
